@@ -46,7 +46,7 @@ def get_students():
 @app.post('/student/{name}', tags=[student_tag],
           responses={"200": StudentSchema, "400": ErrorSchema, "409": ErrorSchema})
 def add_student( form: AddStudentSchema):
-    ml_path = 'ml_model/data_knn.pkl'
+    ml_path = 'ml_model/data_lr.pkl'
     model = Model.load_model(ml_path)
 
     student = StudentModel(
