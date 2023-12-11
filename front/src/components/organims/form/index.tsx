@@ -23,6 +23,8 @@ import PreviosQualificationGradeInput from "../../atoms/previsou-qualification-g
 import AdmissionGrade from "../../atoms/admission-garde";
 import CurricularFirstGradeInput from "../../atoms/curricular-first-grade";
 import CurricularSecondGradeInput from "../../atoms/curricular-second-grade";
+import UnemploymentRateInput from "../../atoms/unemployment-rate-input";
+import InflationRateInput from "../../atoms/inflation-rate-input";
 
 export default function Form() {
   return (
@@ -62,6 +64,8 @@ export default function Form() {
         <DebtorRadios />
         <TuitionFeesUpToDateRadios />
         <ScholarshipHolderRadios />
+        <UnemploymentRateInput />
+        <InflationRateInput />
       </HStack>
       <Button
         type="submit"
