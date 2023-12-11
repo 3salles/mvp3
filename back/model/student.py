@@ -129,11 +129,13 @@ class StudentModel(database.Model):
 
   @classmethod
   def find_student(cls, name):
-      student = cls.query.filter_by(uid=name).first()
+    student = cls.query.filter_by(name=name).first()
 
-      if student:
-          return student
-      return None
+    if student:
+        return student
+
+    return None
+
 
   def save_student(self):
       database.session.add(self)

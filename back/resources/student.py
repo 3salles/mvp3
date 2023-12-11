@@ -41,12 +41,9 @@ class Student(Resource):
             return student.to_json()
         return {'message': 'Student not found'}, 404
     
-    def post(self, name):
-        if StudentModel.find_student(name):
-            return {'message': "Student's name already exists."}, 400
-        
+    def post(self):
         data = Student.properties.parse_args()
-        new_student = StudentModel(name, **data)
+        new_student = StudentModel(**data)
         
         try:
             new_student.save_student()
