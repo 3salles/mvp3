@@ -1,4 +1,11 @@
-import { FormControl, FormLabel, HStack, Radio } from "@chakra-ui/react";
+import {
+  FormControl,
+  FormLabel,
+  HStack,
+  Radio,
+  RadioGroup,
+} from "@chakra-ui/react";
+import useStudentContext from "../../hooks/useStudentContext";
 
 const options = [
   { value: 0, label: "Não" },
@@ -6,16 +13,23 @@ const options = [
 ];
 
 export default function SpecialNeedsRadios() {
+  const { student, updateStudent } = useStudentContext();
+
+  const onChange = (value: string) =>
+    updateStudent({ ...student, educational_special_needs: Number(value) });
+
   return (
     <FormControl>
       <FormLabel>Necessidades Especiais Educacionais</FormLabel>
-      <HStack>
-        {options.map((item) => (
-          <Radio borderColor="black" value={`${item.value}`}>
-            {item.label}
-          </Radio>
-        ))}
-      </HStack>
+      <RadioGroup onChange={onChange}>
+        <HStack>
+          {options.map((item) => (
+            <Radio borderColor="black" value={`${item.value}`}>
+              {item.label}
+            </Radio>
+          ))}
+        </HStack>
+      </RadioGroup>
     </FormControl>
   );
 }

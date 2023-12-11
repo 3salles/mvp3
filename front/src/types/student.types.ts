@@ -30,6 +30,7 @@ export interface IStudent {
 
 export interface IStudentContext {
   student: IStudent,
+  studentCreated: boolean;
   createStudent: (student: IStudent) => void;
   updateStudent: (student:IStudent) => void;
 }

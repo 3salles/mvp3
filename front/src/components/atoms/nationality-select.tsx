@@ -1,4 +1,6 @@
 import { FormControl, FormLabel, Select } from "@chakra-ui/react";
+import { ChangeEvent } from "react";
+import useStudentContext from "../../hooks/useStudentContext";
 
 const options = [
   { value: 1, label: "Português" },
@@ -25,10 +27,19 @@ const options = [
 ];
 
 export default function NationalitySelect() {
+  const { student, updateStudent } = useStudentContext();
+
+  const onChange = (evt: ChangeEvent<HTMLSelectElement>) =>
+    updateStudent({ ...student, nacionality: Number(evt.target.value) });
+
   return (
     <FormControl>
       <FormLabel>Nacionalidade</FormLabel>
-      <Select borderColor="black" placeholder="Selecione uma nacionalidade">
+      <Select
+        borderColor="black"
+        placeholder="Selecione uma nacionalidade"
+        onChange={onChange}
+      >
         {options.map((item) => (
           <option value={item.value}>{item.label}</option>
         ))}

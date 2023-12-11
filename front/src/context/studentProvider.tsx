@@ -6,29 +6,39 @@ import defaultStudent from "./defaultStudent";
 
 export const StudentProvider = ({ children }: { children: ReactNode }) => {
   const [student, setStudent] = useState<IStudent>(defaultStudent);
+  const [studentCreated, setStudentCreated] = useState(false);
 
   const createStudent = useCallback(async (newStudent: IStudent) => {
     const { outcome, ...postStudent } = newStudent;
 
     console.log(">>> ", outcome);
-    const response = await api.post(`/student/${newStudent.name}`, {
+    const response = await api.post(`/student/{name}`, {
       ...postStudent,
     });
 
-    setStudent(response.data);
+    setStudent(response.data.data);
+    setStudentCreated(true);
   }, []);
 
-  const updateStudent = useCallback(async (studentUpdated: IStudent) => {
-    setStudent(studentUpdated);
-  }, []);
+  const updateStudent = useCallback(
+    async (studentUpdated: IStudent) => {
+      setStudent(studentUpdated);
+
+      if (studentCreated) {
+        setStudentCreated(false);
+      }
+    },
+    [studentCreated]
+  );
 
   const contextValue = useMemo(
     () => ({
       student,
+      studentCreated,
       createStudent,
       updateStudent,
     }),
-    [student, createStudent, updateStudent]
+    [student, studentCreated, createStudent, updateStudent]
   );
 
   return (

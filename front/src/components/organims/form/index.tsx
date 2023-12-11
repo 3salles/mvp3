@@ -26,10 +26,17 @@ import CurricularSecondGradeInput from "../../atoms/curricular-second-grade";
 import UnemploymentRateInput from "../../atoms/unemployment-rate-input";
 import InflationRateInput from "../../atoms/inflation-rate-input";
 import useStudentContext from "../../../hooks/useStudentContext";
+import ResultStatus from "../../atoms/result-status";
 
 export default function Form() {
-  const { student } = useStudentContext();
+  const { student, createStudent, studentCreated } = useStudentContext();
   console.log(">>>> ", student);
+  console.log(">>>> ", studentCreated);
+
+  const handleCreate = () => {
+    createStudent(student);
+  };
+
   return (
     <Box p="4" as="form" textAlign="center">
       <HStack>
@@ -70,20 +77,25 @@ export default function Form() {
         <UnemploymentRateInput />
         <InflationRateInput />
       </HStack>
-      <Button
-        type="submit"
-        justifyContent="center"
-        mt="12"
-        bg="teal"
-        h="48px"
-        w="150px"
-        color="white"
-        textTransform="uppercase"
-        fontWeight="bold"
-        _hover={{ bg: "teal.400" }}
-      >
-        Cadastrar
-      </Button>
+      {!studentCreated ? (
+        <Button
+          type="submit"
+          justifyContent="center"
+          mt="12"
+          bg="teal"
+          h="48px"
+          w="150px"
+          color="white"
+          textTransform="uppercase"
+          fontWeight="bold"
+          _hover={{ bg: "teal.400" }}
+          onClick={handleCreate}
+        >
+          Cadastrar
+        </Button>
+      ) : (
+        <ResultStatus />
+      )}
     </Box>
   );
 }

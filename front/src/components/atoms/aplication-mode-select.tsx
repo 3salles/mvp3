@@ -1,4 +1,6 @@
 import { FormControl, FormLabel, Select } from "@chakra-ui/react";
+import useStudentContext from "../../hooks/useStudentContext";
+import { ChangeEvent } from "react";
 
 const options = [
   { value: 1, label: "1ª fase - contingente geral" },
@@ -22,10 +24,19 @@ const options = [
 ];
 
 export default function ApplicationModeSelect() {
+  const { student, updateStudent } = useStudentContext();
+
+  const onChange = (evt: ChangeEvent<HTMLSelectElement>) =>
+    updateStudent({ ...student, application_mode: Number(evt.target.value) });
+
   return (
     <FormControl>
       <FormLabel>Modo de Aplicação</FormLabel>
-      <Select borderColor="black" placeholder="Selecione um modo de aplicação">
+      <Select
+        borderColor="black"
+        placeholder="Selecione um modo de aplicação"
+        onChange={onChange}
+      >
         {options.map((item) => (
           <option value={item.value}>{item.label}</option>
         ))}
