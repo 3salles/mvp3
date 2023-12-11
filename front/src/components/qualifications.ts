@@ -1,0 +1,33 @@
+const qualifications = [
+  { value: 1, label: 'Ensino Secundário - 12º Ano ou Equivalente' },
+  { value: 2, label: 'Ensino Superior - Licenciatura' },
+  { value: 3, label: 'Ensino Superior - Grau' },
+  { value: 4, label: 'Ensino Superior - Mestrado' },
+  { value: 5, label: 'Ensino Superior - Doutorado' },
+  { value: 6, label: 'Frequência de Ensino Superior' },
+  { value: 9, label: '12º ano de escolaridade - não concluído' },
+  { value: 10, label: '11º ano de escolaridade - não concluído' },
+  { value: 11, label: '7º ano (Antigo)' },
+  { value: 12, label: 'Outro - 11º ano de escolaridade' },
+  { value: 14, label: '10º ano de escolaridade' },
+  { value: 18, label: 'Curso Geral de Comércio' },
+  { value: 19, label: 'Educação Básica 3º Ciclo (9º/10º/11º ano) ou Equiv.' },
+  { value: 22, label: 'Curso Técnico-Profissional' },
+  { value: 26, label: '7º ano de escolaridade' },
+  { value: 27, label: '2º ciclo do curso geral do ensino secundário' },
+  { value: 29, label: '9º ano de escolaridade - não concluído' },
+  { value: 30, label: '8º ano de escolaridade' },
+  { value: 34, label: 'Desconhecido' },
+  { value: 35, label: 'Não sabe ler nem escrever' },
+  { value: 36, label: 'Sabe ler sem ter completado o 4º ano de escolaridade' },
+  { value: 37, label: 'Educação Básica 1º Ciclo (4º/5º ano) ou Equiv.' },
+  { value: 38, label: 'Educação Básica 2º Ciclo (6º/7º/8º ano) ou Equiv.' },
+  { value: 39, label: 'Curso de Especialização Tecnológica' },
+  { value: 40, label: 'Ensino Superior - Grau (1º ciclo)' },
+  { value: 41, label: 'Curso de Estudos Superiores Especializados' },
+  { value: 42, label: 'Curso Técnico Superior Profissional' },
+  { value: 43, label: 'Ensino Superior - Mestrado (2º ciclo)' },
+  { value: 44, label: 'Ensino Superior - Doutorado (3º ciclo)' }
+];
+
+export default qualifications
