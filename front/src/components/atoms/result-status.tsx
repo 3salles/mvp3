@@ -1,9 +1,8 @@
 import { Button, Text } from "@chakra-ui/react";
 import useStudentContext from "../../hooks/useStudentContext";
-import defaultStudent from "../../context/defaultStudent";
 
 export default function ResultStatus() {
-  const { student, updateStudent } = useStudentContext();
+  const { student } = useStudentContext();
 
   const getStudentStatus = () => {
     switch (student.outcome) {
@@ -16,7 +15,7 @@ export default function ResultStatus() {
     }
   };
 
-  const handleNewRegister = () => updateStudent(defaultStudent);
+  const handleNewRegister = () => location.reload();
 
   return (
     <>
