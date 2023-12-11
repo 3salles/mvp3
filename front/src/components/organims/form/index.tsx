@@ -25,8 +25,11 @@ import CurricularFirstGradeInput from "../../atoms/curricular-first-grade";
 import CurricularSecondGradeInput from "../../atoms/curricular-second-grade";
 import UnemploymentRateInput from "../../atoms/unemployment-rate-input";
 import InflationRateInput from "../../atoms/inflation-rate-input";
+import useStudentContext from "../../../hooks/useStudentContext";
 
 export default function Form() {
+  const { student } = useStudentContext();
+  console.log(">>>> ", student);
   return (
     <Box p="4" as="form" textAlign="center">
       <HStack>

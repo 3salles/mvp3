@@ -27,3 +27,9 @@ export interface IStudent {
   tuition_fees_up_to_date: number;
   unemployment_rate: number;
 }
+
+export interface IStudentContext {
+  student: IStudent,
+  createStudent: (student: IStudent) => void;
+  updateStudent: (student:IStudent) => void;
+}
