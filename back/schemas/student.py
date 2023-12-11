@@ -71,3 +71,6 @@ class AddStudentSchema(BaseModel):
 
 class DeleteStudentSchema(BaseModel):
    message: str
+
+class FindStudentSchema(BaseModel):
+   name: str = "John Doe"

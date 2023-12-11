@@ -4,7 +4,7 @@ from flask_cors import CORS
 from model.student import StudentModel
 from model.model import Model
 from schemas.error import ErrorSchema
-from schemas.student import StudentSchema,  ListStudentsSchema, AddStudentSchema
+from schemas.student import StudentSchema,  ListStudentsSchema, AddStudentSchema, FindStudentSchema
 from extensions.database import database
 from flask_restful import Api
 from resources.student import Students, Student
@@ -80,12 +80,12 @@ def add_student( form: AddStudentSchema):
     )
     
     student.save_student()
-    return {'message': f"Student '{student.name}' created"}, 200
+    return {'data': student.to_json()}, 200
 
 
-@app.get('/student', tags=[student_tag],
+@app.get('/student/{name}', tags=[student_tag],
          responses={"200": StudentSchema, "404": ErrorSchema})
-def get_student(name: str):
+def get_student(name: FindStudentSchema):
     logger.debug(f"Searching for student {name}.")
 
 
